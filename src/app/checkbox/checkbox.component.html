@@ -1,0 +1,8 @@
+<div class="container">
+    <span>{{counter}}</span>
+    <!-- <input type="text" (change)="changeOn($event)" [value]="index" min="0" > -->
+    <button class="me-2" [ngClass]="{ 'btn-danger': isRed}" (click)="updateCounter(1)">+</button>
+    <button (click)="addRandomNumber()">Random 2 or 3</button>
+    <br />
+    <input type="checkbox" [checked]="isCheck">
+</div>

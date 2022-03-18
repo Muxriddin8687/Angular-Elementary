@@ -1,0 +1,82 @@
+<div class="container my-5">
+
+    <div style="display: block;">
+        <canvas mdbChart
+            [chartType]="chartType"
+            [datasets]="chartDatasets"
+            [labels]="chartLabels"
+            [colors]="chartColors"
+            [options]="chartOptions"
+            [legend]="true"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)">
+        </canvas>
+    </div>
+
+    <div class="mt-5 d-flex justify-content-between">
+        <h3 class="d-block">Davlatlar bo'yicha statistika:</h3>
+        <input
+            [(ngModel)]="keyword"
+            (ngModelChange)="onCountryFilter()"
+            type="text"
+            placeholder="Search..."
+            class="form-control mb-3"
+            style="width: 300px;"
+        >
+    </div>
+
+    <table class="table table-bordered table-striped table-hover  table-responsive">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Davlat</th>
+                <th>Umumiy</th>
+                <th>Yangi</th>
+                <th>Umumiy vafot etaganlar</th>
+                <th>Yangi vafot etganlar</th>
+                <th>Aktiv holatlar</th>
+                <th>Umumiy tuzlganlar</th>
+                <th>Jiddiy holatdagilar</th>
+                <th>Umumiy / 1M aholi</th>
+                <th>Vafot etganlar / 1M aholi</th>
+                <th>Testlar</th>
+                <th>Umumiy testlar / 1M aholi</th>
+                <th>Aholi</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="countryStatistics">
+            <tr
+                *ngFor="let countryStatistic of countryStatistics; let i = index;"
+                [ngClass]="{ 'bg-green text-light' : countryStatistic.active == 0 }"
+            >
+                <td>{{ i+1 }}</td>
+                <td>
+                    <a routerLink="/country/{{ countryStatistic.countryInfo.iso3 }}">
+                        {{ countryStatistic.country }}
+                    </a>
+                </td>
+                <td>{{ countryStatistic.cases | number }}</td>
+                <td [ngClass]="{ 'bg-warning' : countryStatistic.todayCases > 0}">
+                    {{
+                        countryStatistic.todayCases > 0 ? ('+' + countryStatistic.todayCases) : ''
+                    }}
+                </td>
+                <td>{{ countryStatistic.deaths | number }}</td>
+                <td [ngClass]="{ 'bg-danger text-light' : countryStatistic.todayDeaths > 0 }">
+                    {{
+                        countryStatistic.todayDeaths > 0 ? ('+' + countryStatistic.todayDeaths) : ''
+                    }}
+                </td>
+                <td>{{ countryStatistic.active | number }}</td>
+                <td>{{ countryStatistic.recovered | number }}</td>
+                <td>{{ countryStatistic.critical | number }}</td>
+                <td>{{ countryStatistic.casesPerOneMillion | number }}</td>
+                <td>{{ countryStatistic.deathsPerOneMillion | number }}</td>
+                <td>{{ countryStatistic.tests | number }}</td>
+                <td>{{ countryStatistic.testsPerOneMillion | number }}</td>
+                <td class="text-primary ">{{ countryStatistic.population | number }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

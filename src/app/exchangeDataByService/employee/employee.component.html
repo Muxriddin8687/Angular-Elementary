@@ -1,0 +1,4 @@
+<p>
+  {{ employee }} : <strong>{{ task }}</strong>
+  <button [disabled]="!announced || confirmed" class="btn btn-warning mx-2" (click)="confirm()">Tasdiqladi</button>
+</p>

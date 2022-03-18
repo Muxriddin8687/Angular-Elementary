@@ -1,0 +1,15 @@
+<ng-container *ngIf="lesson; else none" class="border px-3 py-2">
+
+    <p>Title: {{ lesson.title | uppercase }}</p>
+    <p>Price: {{ lesson.price | currency:"USD" }}</p>
+    <p>Duration: {{ lesson.duration | number }}</p>
+    <p>Deadline: {{ lesson.intakeDeadline | date }}</p>
+
+    <button class="btn btn-info mr-1" (click)="onPlusBtnClick()">+</button>
+    <button class="btn btn-warning" (click)="onMinusBtnClick()">-</button>
+
+</ng-container>
+
+<ng-template #none>
+    Select lesson
+</ng-template>

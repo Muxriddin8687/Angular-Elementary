@@ -1,0 +1,32 @@
+<div class="row my-3">
+
+    <div class="col mb-3" *ngIf="!countryStatistic">
+        <app-spinner></app-spinner>
+    </div>
+    <div class="col text-center" *ngIf="countryStatistic">
+        <h1>
+            <img [src]="countryStatistic.countryInfo.flag" alt="flag" width="50px">
+            {{countryStatistic.country}}
+        </h1>
+        <h3>Jami tasdiqlanganlar:</h3>
+        <h2 class="text-warning">{{countryStatistic.cases | number}}</h2>
+        <h3>Vafot etganlar:</h3>
+        <h2 class="text-danger">{{countryStatistic.deaths | number}}</h2>
+        <h3>Tuzalganlar:</h3>
+        <h2 class="text-success">{{countryStatistic.recovered | number}}</h2>
+    </div>
+</div>
+
+<!-- chart section -->
+<div style="display: block; width: 300px;">
+    <canvas mdbChart
+        [chartType]="chartType"
+        [datasets]="chartDatasets"
+        [labels]="chartLabels"
+        [colors]="chartColors"
+        [options]="chartOptions"
+        [legend]="true"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)">
+    </canvas>
+  </div>

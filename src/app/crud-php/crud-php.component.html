@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="text-center ">
+        <h3 class="shadow my-3">CRUD with PHP</h3>
+    </div>
+
+    <table class="table table-striped table-hover">
+    <thead class="bg-info">
+        <tr>
+            <th>No</th>
+            <th>Firstname</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th colspan="2"><button class="btn shadow" (click)="add()"><i class="fa fa-plus"></i></button></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let mydata of data; let i = index;">
+            <td>{{ i + 1 }}</td>
+            <td><a routerLink="/product-details/{{mydata.p_id}}">{{ mydata.p_name }}</a></td>
+            <td>{{ mydata.p_description }}</td>
+            <td>{{ mydata.p_price }}</td>
+            <td><button class="btn shadow" (click)="delete(mydata.p_id)"><i class="fa fa-trash"></i></button></td>
+            <td><a routerLink="/product-details/{{mydata.p_id}}" class="btn shadow"><i class="fa fa-edit"></i></a></td>
+        </tr>
+    </tbody>
+    </table>
+</div>

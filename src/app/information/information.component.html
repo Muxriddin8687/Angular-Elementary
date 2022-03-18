@@ -1,0 +1,18 @@
+<div class="container text-center">
+    <div class="alert alert-info" role="alert">
+        <i class="fa fa-bar-chart"></i>
+        Coronavirus bo'yicha ma'lumot!
+    </div>
+    <p class="text-primary"><i class="fa fa-clock-o"></i> Qayta yuklangan vaqti: {{ updateTime | date: 'medium' }}</p>
+    <h4>Jami tasdiqlangan:</h4>
+    <h3 class="text-warning">{{ totalCases | number }}</h3>
+    <h4>Vafot etganlar:</h4>
+    <h3 class="text-danger">{{ totalDeaths | number }}</h3>
+    <h4>Tuzalganlar:</h4>
+    <h3 class="text-success">{{ totalRecovered | number }}</h3>
+    <hr>
+</div>
+
+    <!-- countries table -->
+    <app-table></app-table>
+    <!-- /countries table -->

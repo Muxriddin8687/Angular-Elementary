@@ -1,0 +1,20 @@
+<div class="container" style="height: 100vh;">
+    <img *ngIf="!isActive; else load" src="../../../assets/icons/icon-128x128.png" alt="" srcset="">
+    <ng-template #load>
+        <p>Rasm yo'q</p>
+    </ng-template>
+
+    <input type="text" [(ngModel)]="ngSwitch" />
+    <div [ngSwitch]="ngSwitch">
+        <p *ngSwitchCase="1">1 iwladi</p>
+        <p *ngSwitchCase="2">2 iwladi</p>
+        <p *ngSwitchCase="3">3 iwladi</p>
+        <p *ngSwitchDefault="">defult iwladi</p>
+    </div>
+
+    <ul>
+        <li *ngFor="let lesson of lessons" (click)="selectLesson(lesson)">{{ lesson.title }}</li>
+    </ul>
+
+    <app-childeren [lesson]="selectedLesson" (changeTitle)="onTitleChange($event)"></app-childeren>
+</div>

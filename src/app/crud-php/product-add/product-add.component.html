@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row text-center">
+        <div class="col py-5">
+            <h3>Product add</h3>
+            <form #fs="ngForm" (ngSubmit)="addProduct(fs)">
+                <label>Product name:
+                    <input class="form-control" type="text" ngModel name="p_name" placeholder="name">
+                </label>
+                <br>
+                <label>Product description:
+                    <input class="form-control" type="text" ngModel name="p_description" placeholder="description">
+                </label>
+                <br>
+                <label>Product price:
+                    <input class="form-control" type="text" ngModel name="p_price" placeholder="price">
+                </label>
+                <br>
+                <button type="submit" class="btn btn-success">ADD</button>
+            </form>
+        </div>
+    </div>
+</div>

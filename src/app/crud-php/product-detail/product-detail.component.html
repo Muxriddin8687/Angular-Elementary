@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 mx-auto my-5">
+
+            <form #ff="ngForm" (ngSubmit)="onUpdate(ff)">
+                <input type="hidden" [(ngModel)]="productUpdate.p_id" name="p_id" [value]="productUpdate.p_id" >
+                <input type="text" class="form-control" [(ngModel)]="productUpdate.p_name" name="p_name" [value]="productUpdate.p_name" >
+                <br />
+                <input type="text" class="form-control" [(ngModel)]="productUpdate.p_description" name="p_description" [value]="productUpdate.p_description" >
+                <br />
+                <input type="text" class="form-control" [(ngModel)]="productUpdate.p_price" name="p_price" [value]="productUpdate.p_price" >
+                <br />
+                <button type="submit" (click)="cancel()" class="btn btn-info float-right">CANCEL</button>
+                <input type="submit" class="btn btn-warning float-right mr-3" value="UPDATE" >
+            </form>
+
+        </div>
+    </div>
+</div>

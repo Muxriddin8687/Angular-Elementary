@@ -1,0 +1,110 @@
+<div class="container my-3">
+    <h4>Add item <button (click)="openModal()" class="btn border"><i class="fa fa-plus"></i></button></h4>
+    <div class="modal">
+        <h5>Create item</h5>
+        <input type="text" class="form-control">
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Backlog</h2>
+
+            <div
+                cdkDropList
+                id="todo"
+                #todoList="cdkDropList"
+                [cdkDropListData]="todo"
+                [cdkDropListConnectedTo]="[doneList, inProgressList]"
+                (cdkDropListDropped)="drop($event)"
+                class="list"
+            >
+                <p class="empty-label" *ngIf="todo.length === 0">Empty list</p>
+                <app-animation (edit)="editTask('todo', $event)" *ngFor="let task of todo" cdkDrag [task]="task"></app-animation>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <h2>In progress</h2>
+
+            <div
+                cdkDropList
+                id="inProgress"
+                #inProgressList="cdkDropList"
+                [cdkDropListData]="inProgress"
+                [cdkDropListConnectedTo]="[todoList, doneList]"
+                (cdkDropListDropped)="drop($event)"
+                class="list">
+                <p class="empty-label" *ngIf="inProgress.length === 0">Empty list</p>
+                <app-animation (edit)="editTask('inProgress', $event)" *ngFor="let task of inProgress" cdkDrag [task]="task"></app-animation>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <h2>Done</h2>
+
+            <div
+                cdkDropList
+                id="done"
+                #doneList="cdkDropList"
+                [cdkDropListData]="done"
+                [cdkDropListConnectedTo]="[todoList, inProgressList]"
+                (cdkDropListDropped)="drop($event)"
+                class="list">
+                <p class="empty-label" *ngIf="done.length === 0">Empty list</p>
+                <app-animation (edit)="editTask('done', $event)" *ngFor="let task of done" cdkDrag [task]="task"></app-animation>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- milecie vewi -->
+<div class="container">
+    <div class="row my-5">
+        <div class="col-md-3">
+            <input type="text" class="form-control" [(ngModel)]="enterValue">
+            <br />
+            <button type="submit" (click)="onAddPost()" class="btn btn-info">Ok</button>
+        </div>
+        <div class="col-md-9">
+
+            <!-- input property -->
+            <p>{{ newPost }}</p>
+
+            <!-- upload file content -->
+            <div class="container">
+                <input
+                    type="file"
+                    style="display: none;"
+                    enctype="multipart/form-data"
+                   (change)="onFileSelected($event)" #fileUpload>
+
+                <div class="file-upload">
+
+                    <button class="btn text-primary upload-btn"
+                        (click)="fileUpload.click()">
+                        <i class="fa fa-upload"></i>
+                    </button>
+                    {{ fileName || "No file uploaded yet." }}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<img style="position: absolute;
+            margin: 0px;
+            padding: 0px;
+            border: none;
+            width: 1263px;
+            height: 669.608px;
+            max-height: none;
+            max-width: none;
+            z-index: -999999;
+            opacity: 0.898897;
+            left: 0px;
+            top: -190.804px;"
+        src="#!">

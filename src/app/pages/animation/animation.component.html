@@ -1,0 +1,9 @@
+<!-- seryozniy content -->
+<div class="card m-3" *ngIf="task" (dbclick)="edit.emit(task)">
+    <div class="card-body">
+        <h2>{{ task.title }}</h2>
+        <p>{{ task.description }}</p>
+    </div>
+</div>
+
+
